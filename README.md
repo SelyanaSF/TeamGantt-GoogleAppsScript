@@ -10,7 +10,9 @@ projectConsole.gs is the script for additional menu bar that contains menus of:
 - load list of project 
 - load tasks that are out of rule.
 
-main.gs and checkTask.gs are scripts contain multiple calls to TeamGantt API using HTTP GET method. API Documentation : https://teamgantt.docs.apiary.io/#
+main.gs and checkTask.gs are scripts contain multiple calls to TeamGantt API using HTTP GET/POST.
+
+TeamGantt API Documentation : https://teamgantt.docs.apiary.io/#
 
 
 
