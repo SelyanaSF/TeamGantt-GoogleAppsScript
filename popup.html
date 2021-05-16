@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <base target="_top">
+  </head>
+  <style>
+  input[type=text], select {
+  width: 90%;
+  padding: 10px 15px;
+  margin: 6px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  }
+  input[type=password], select {
+  width: 90%;
+  padding: 10px 15px;
+  margin: 6px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  }
+
+  input[type=button] {
+  width: 90%;
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px 15px;
+  margin: 6px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  }
+  
+  input[type=button]:hover {
+  background-color: #45a049;
+  }
+  
+  div {
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 10px;
+  }
+  p{
+  font-size: 12px;
+  
+  }
+  a:link {
+  color: blue;
+  }
+  </style>
+  <body>
+  <form id ="user-pass-form">
+  <label for="username">Username/Email:</label><br>
+   <input type="text" id="username" name="username" required class="validate"><br>
+  <label for="authkey">Your App Token:</label><br>
+   <input type="text" id="authkey" name="authkey" required class="validate"><br>
+  <label for="pwd">Password:</label><br>
+   <input type="password" id="pwd" name="pwd" required class="validate"><br><br>
+  <input type="button" id = "submit" value="Submit" class="action" onclick="form_data()" >
+</form>
+<p [b]id="Apptoken_hint"[/b]>*Generate an app token by going to Account Settings > Configure API Access (beta) or by selecting this link: <a href ="https://app.teamgantt.com/admin/app-tokens">https://app.teamgantt.com/admin/app-tokens</a></p>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+ <script type="text/javascript">
+ function form_data(){
+   var dataArray = [document.getElementById('username').value,document.getElementById('pwd').value, document.getElementById('authkey').value];
+   google.script.run.withSuccessHandler().grabLoginInformation(dataArray);
+   closeIt();
+ };
+ function closeIt(){
+   google.script.host.close();
+ };
+
+  </script>
+  </body>
+</html>
+
+
+

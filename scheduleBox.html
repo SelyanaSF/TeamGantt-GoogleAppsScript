@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <base target="_top">
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/css/datepicker.min.css">
+<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+  </head>
+  <body>
+ <form >
+ <div class="col-sm-6">
+ <label for="days">Day</label>
+ <select class="form-control" id="day">
+ <option value="MONDAY">Monday</option>
+ <option value="TUESDAY">Tuesday</option>
+ <option value="WEDNESDAY">Wednesday</option>
+ <option value="THURSDAY">Thursday</option>
+ <option value="FRIDAY">Friday</option>
+ <option value="SATURDAY">Saturday</option>
+ <option value="SUNDAY">Sunday</option>
+ </select>
+ <br>
+ </div>
+  <div class="col-sm-6">
+  <label for="datetimepicker3">Schedule Time</label>
+  <div class='input-group date' id='datetimepicker3'>
+  <input type='text' id='time' class="form-control" required class="validate" />
+  <span class="input-group-addon">
+  <span class="glyphicon glyphicon-time"></span>
+  </span>
+  </div>
+  <br>
+   <button id="submit-booking" class="btn btn-success" type="submit" onclick="submitSchedule()">Submit</button>
+  </div>
+</form>
+
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment-with-locales.js"></script>
+<script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.14.30/js/bootstrap-datetimepicker.min.js"></script>
+<script type="text/javascript">
+/**
+ * Restrict the time option and change the format to be Time-only and 30 mins interval
+ */
+
+$(function () {
+  $('#datetimepicker3').datetimepicker({
+    format: 'HH:mm',
+    stepping: 60
+  });
+});
+
+ function submitSchedule(){
+   var dataArray = [document.getElementById('time').value,document.getElementById('day').value];
+   google.script.run.withSuccessHandler().createTimeDrivenTrigger(dataArray);
+   closeIt();
+ };
+ function closeIt(){
+   google.script.host.close();
+ };
+
+</script>
+    
+  </body>
+</html>
+
+
+
